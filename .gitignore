@@ -3,6 +3,9 @@
 # `.canonignore` Says what the repository Carries but does not Teach.
 # This Says what it never Carries at all.
 
+# Session context Stays local.
+/.handoff.md
+
 # Vendor Entrances. Every one of them Resolves to `.agents/`, which is
 # the canonical source and Lives in its own repository. An entrance
 # committed here is a second copy waiting to Drift.

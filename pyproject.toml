@@ -3,15 +3,15 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "on-acid"
-version = "0.2.0"
-description = "Acid-base equilibrium without solving a quadratic by hand."
+name = "dissociation"
+version = "0.1.0"
+description = "Exact acid-base equilibrium: pH, speciation, buffers and titration curves, solved rather than approximated."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.9"
-dependencies = []
-keywords = ["chemistry", "equilibrium", "ph", "titration", "buffer"]
+dependencies = ["PyYAML>=6.0"]
+keywords = ["chemistry", "equilibrium", "ph", "titration", "buffer", "speciation", "analytical-chemistry"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -26,19 +26,22 @@ classifiers = [
 ]
 
 [project.scripts]
-on-acid = "dissociation:demo"
+dissociation = "dissociation:demo"
 
 [project.urls]
-Homepage = "https://github.com/cangrejometralleta/on-acid"
-Source = "https://github.com/cangrejometralleta/on-acid"
+Homepage = "https://github.com/cangrejometralleta/dissociation"
+Source = "https://github.com/cangrejometralleta/dissociation"
 
-[tool.setuptools]
-py-modules = ["dissociation"]
+[tool.setuptools.packages.find]
+include = ["dissociation*"]
+
+[tool.setuptools.package-data]
+dissociation = ["constants/*.yaml"]
 
 [tool.ruff]
 line-length = 100
 
-# The gate Catches bugs, never taste. The aligned tables in `dissociation.py`
-# and the order of `__all__` are Deliberate, so no formatter Reflows them.
+# The gate Catches bugs, never taste. The order of `__all__` is Deliberate,
+# so no formatter Reflows it.
 [tool.ruff.lint]
 select = ["E", "F", "B"]

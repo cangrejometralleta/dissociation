@@ -1,0 +1,143 @@
+acids:
+  - name: acetic acid
+    formula: CH3COOH
+    constants: [1.8e-5]
+    aliases:
+      en: [vinegar]
+      es: [ácido acético, acetico, vinagre]
+      pt: [ácido acético, acetico, vinagre]
+  - name: formic acid
+    formula: HCOOH
+    constants: [1.8e-4]
+    aliases:
+      es: [ácido fórmico, formico]
+      pt: [ácido fórmico, formico]
+  - name: lactic acid
+    formula: C3H6O3
+    constants: [1.4e-4]
+    aliases:
+      es: [ácido láctico, lactico]
+      pt: [ácido láctico, lactico]
+  - name: benzoic acid
+    formula: C6H5COOH
+    constants: [6.3e-5]
+    aliases:
+      es: [ácido benzoico, benzoico]
+      pt: [ácido benzoico, benzoico]
+  - name: hydrofluoric acid
+    formula: HF
+    constants: [6.8e-4]
+    aliases:
+      es: [ácido fluorhídrico, fluorhidrico]
+      pt: [ácido fluorídrico, fluoridrico]
+  - name: nitrous acid
+    formula: HNO2
+    constants: [4.5e-4]
+    aliases:
+      es: [ácido nitroso, nitroso]
+      pt: [ácido nitroso, nitroso]
+  - name: hydrocyanic acid
+    formula: HCN
+    constants: [6.2e-10]
+    aliases:
+      es: [ácido cianhídrico, cianhidrico]
+      pt: [ácido cianídrico, cianidrico]
+  - name: hypochlorous acid
+    formula: HClO
+    constants: [3.0e-8]
+    aliases:
+      es: [ácido hipocloroso, hipocloroso]
+      pt: [ácido hipocloroso, hipocloroso]
+  - name: carbonic acid
+    formula: H2CO3
+    constants: [4.3e-7, 4.7e-11]
+    aliases:
+      es: [ácido carbónico, carbonico]
+      pt: [ácido carbônico, carbonico]
+  - name: hydrosulfuric acid
+    formula: H2S
+    constants: [8.9e-8, 1.0e-19]
+    aliases:
+      es: [ácido sulfhídrico, sulfhidrico]
+      pt: [ácido sulfídrico, sulfidrico]
+  - name: sulfurous acid
+    formula: H2SO3
+    constants: [1.5e-2, 1.0e-7]
+    aliases:
+      es: [ácido sulfuroso, sulfuroso]
+      pt: [ácido sulfuroso, sulfuroso]
+  - name: oxalic acid
+    formula: H2C2O4
+    constants: [5.9e-2, 6.4e-5]
+    aliases:
+      es: [ácido oxálico, oxalico]
+      pt: [ácido oxálico, oxalico]
+  - name: ascorbic acid
+    formula: C6H8O6
+    constants: [7.9e-5, 1.6e-12]
+    aliases:
+      en: [vitamin c]
+      es: [ácido ascórbico, ascorbico, vitamina c]
+      pt: [ácido ascórbico, ascorbico, vitamina c]
+  - name: phosphoric acid
+    formula: H3PO4
+    constants: [7.5e-3, 6.2e-8, 4.2e-13]
+    aliases:
+      es: [ácido fosfórico, fosforico]
+      pt: [ácido fosfórico, fosforico]
+  - name: citric acid
+    formula: C6H8O7
+    constants: [7.4e-4, 1.7e-5, 4.0e-7]
+    aliases:
+      es: [ácido cítrico, citrico]
+      pt: [ácido cítrico, citrico]
+
+bases:
+  - name: ammonia
+    formula: NH3
+    constants: [1.8e-5]
+    aliases:
+      es: [amoníaco, amoniaco, amonio]
+      pt: [amônia, amonia]
+  - name: methylamine
+    formula: CH3NH2
+    constants: [4.4e-4]
+    aliases:
+      es: [metilamina]
+      pt: [metilamina]
+  - name: ethylamine
+    formula: C2H5NH2
+    constants: [4.5e-4]
+    aliases:
+      es: [etilamina]
+      pt: [etilamina]
+  - name: trimethylamine
+    formula: (CH3)3N
+    constants: [6.3e-5]
+    aliases:
+      es: [trimetilamina]
+      pt: [trimetilamina]
+  - name: pyridine
+    formula: C5H5N
+    constants: [1.7e-9]
+    aliases:
+      es: [piridina]
+      pt: [piridina]
+  - name: aniline
+    formula: C6H5NH2
+    constants: [4.3e-10]
+    aliases:
+      es: [anilina]
+      pt: [anilina]
+  - name: hydrazine
+    formula: N2H4
+    constants: [1.7e-6]
+    aliases:
+      es: [hidrazina]
+      pt: [hidrazina]
+  - name: hydroxylamine
+    formula: NH2OH
+    constants: [1.1e-8]
+    aliases:
+      es: [hidroxilamina]
+      pt: [hidroxilamina]

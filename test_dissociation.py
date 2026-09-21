@@ -1,8 +1,7 @@
 """
 test_dissociation.py — the outside of dissociation.py.
 
-unittest, because the module Depends on nothing but the standard library
-and a test suite is no reason to invite a guest.
+unittest keeps the test runner in the standard library.
 
 Every expectation is Spelled: a textbook number, a chemical invariant
 written out here, or a limit the chemistry already knows.
@@ -324,6 +323,23 @@ class TheTableAnswersToEveryNameItWasGiven(unittest.TestCase):
     def test_a_nickname_finds_it(self):
         self.assertEqual(d.find_species("vinagre").formula, "CH3COOH")
         self.assertEqual(d.find_species("vitamin c").formula, "C6H8O6")
+
+    def test_a_portuguese_alias_finds_it(self):
+        self.assertEqual(d.find_species("ácido fluorídrico").formula, "HF")
+        self.assertEqual(d.find_species("ácido cianídrico").formula, "HCN")
+        self.assertEqual(d.find_species("ácido sulfídrico").formula, "H2S")
+
+    def test_portuguese_and_spanish_reach_the_same_entry(self):
+        for spanish, portuguese in (
+            ("ácido fluorhídrico", "ácido fluorídrico"),
+            ("ácido carbónico", "ácido carbônico"),
+            ("amoníaco", "amônia"),
+        ):
+            self.assertEqual(d.find_species(spanish), d.find_species(portuguese))
+
+    def test_the_circumflex_and_the_tilde_fold_like_the_acute(self):
+        self.assertEqual(d.find_species("AMONIA").formula, "NH3")
+        self.assertEqual(d.find_species("acido carbonico").formula, "H2CO3")
 
     def test_bases_are_searched_as_well(self):
         self.assertTrue(d.find_species("amoníaco").is_base)

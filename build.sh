@@ -33,29 +33,32 @@ verify_interpreter() {
 }
 
 install_packages() {
-	[ -x "$(tool python)" ] || "$PYTHON" -m venv "$VENV" ||
+	[ -x "$(tool python)" ] && "$(tool python)" -c '' >/dev/null 2>&1 ||
+		"$PYTHON" -m venv --clear "$VENV" ||
 		refuse "wanted a virtual environment at $VENV." "$PYTHON -m venv $VENV"
 
-	"$(tool python)" -m pip install --quiet --upgrade pip ruff mypy build ||
-		refuse "wanted ruff, mypy and build in $VENV." \
-			"$(tool python) -m pip install ruff mypy build"
+	"$(tool python)" -m pip install --quiet --upgrade \
+		pip ruff mypy build 'PyYAML>=6.0' types-PyYAML ||
+		refuse "wanted the project and build tools in $VENV." \
+			"$(tool python) -m pip install ruff mypy build 'PyYAML>=6.0' types-PyYAML"
 }
 
 # Lints rather than formats: the aligned tables are Deliberate,
 # and a formatter that Reflows them Costs more than it Catches.
 verify_lint() {
-	"$(tool ruff)" check . ||
-		refuse "wanted the lint to be clean." "$(tool ruff) check --fix ."
+	"$(tool python)" -m ruff check . ||
+		refuse "wanted the lint to be clean." "$(tool python) -m ruff check --fix ."
 }
 
 verify_types() {
-	"$(tool mypy)" dissociation.py ||
-		refuse "wanted the annotations to hold." "$(tool mypy) dissociation.py"
+	"$(tool python)" -m mypy dissociation ||
+		refuse "wanted the annotations to hold." "$(tool python) -m mypy dissociation"
 }
 
 verify_tests() {
-	"$PYTHON" -m unittest discover -p 'test_*.py' ||
-		refuse "wanted every test to pass." "$PYTHON -m unittest discover -p 'test_*.py'"
+	"$(tool python)" -m unittest discover -p 'test_*.py' ||
+		refuse "wanted every test to pass." \
+			"$(tool python) -m unittest discover -p 'test_*.py'"
 }
 
 verify_artefact() {
