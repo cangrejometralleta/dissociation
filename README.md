@@ -87,9 +87,36 @@ Multiplying numerator and denominator by `Ka + √(Ka² + 4·Ka·C)` turns the d
 [H+] = 2·Ka·C / (Ka + √(Ka² + 4·Ka·C))
 ```
 
-Both expressions are the same number. The first one subtracts two nearly equal quantities when `Ka ≪ C`,
-which is exactly when a weak acid is interesting, and the subtraction costs significant digits
+Both expressions are the same number. The first one subtracts two nearly equal quantities when `C ≪ Ka`,
+so floating-point arithmetic can lose significant digits in that limit
 — see [loss of significance](https://en.wikipedia.org/wiki/Loss_of_significance).
+
+### Precision and simplicity benchmark
+
+Let `q = C/Ka`. The exact root, in units of `Ka`, is
+`x/Ka = 2q / (1 + √(1 + 4q))`. It gives a stable reference for comparing the direct formula,
+the rationalized formula, and the classroom approximation `x ≈ √(Ka·C)`.
+
+The approximation assumes `x` is small beside `C`, which holds as `q` grows.
+Its relative overestimate is measured against the exact root; the floating-point columns compare
+the two exact forms with an 80-digit `Decimal` reference using binary64 values for `Ka = 1` and `C = q`.
+
+| `C/Ka` | Approximation overestimate | Direct-form relative error | Rationalized-form relative error |
+| ---: | ---: | ---: | ---: |
+| `1e-16` | Outside its valid regime | `+11.0223%` | `+1.00e-14%` |
+| `1e-12` | Outside its valid regime | `−0.002212%` | `−4.84e-15%` |
+| `1e2` | `+5.1249%` | `+9.25e-15%` | `−9.42e-15%` |
+| `1e4` | `+0.50125%` | `−1.97e-15%` | `−1.97e-15%` |
+| `1e6` | `+0.05001%` | `−6.43e-16%` | `−6.43e-16%` |
+
+For a simple calculation benchmark, count arithmetic operators and square roots in the normalized formulas,
+excluding constants: the direct exact form uses four arithmetic operations and one square root;
+the rationalized exact form uses five and one; `√q` uses one square root and no arithmetic operations.
+That last count buys simplicity by assuming the approximation. The direct factored form is the shortest exact expression;
+the rationalized form adds one operation and avoids cancellation when `C ≪ Ka`.
+The approximation's error depends on `C/Ka`; it is within 5% here once `C/Ka` is about `105` or larger.
+For the common weak-acid regime `Ka ≪ C`, the direct exact formula is already well-conditioned,
+and the approximation improves as `C/Ka` increases.
 
 ## Many constants become a sum
 
